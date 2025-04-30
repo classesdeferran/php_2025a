@@ -1,0 +1,7 @@
+echo "# PHP_2025a ## Repo con código básico." >> README.md
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/classesdeferran/php_2025a.git
+git push -u origin main
