@@ -67,3 +67,8 @@ array_push($array1, "amarillo");
 var_dump($array1);
 
 $arrayAsociativo2 = array("nombre" => "Pepe", "edad" => 25);
+
+echo "<br>";
+
+echo "********************"."<br>";
+
