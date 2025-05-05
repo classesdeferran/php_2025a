@@ -49,6 +49,8 @@ $color = "white";
 
                 <?php if ($fila['color'] == "white" || $fila['color'] == "yellow" || $fila['color'] == "pink" || $fila['color'] == "grey") {
                     $color = "black";
+                } else {
+                    $color = "white";
                 }
                 ?>
                 <div style="background-color: <?= $fila['color'] ?>; color: <?= $color ?>;">
