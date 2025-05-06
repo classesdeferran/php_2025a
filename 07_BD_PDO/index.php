@@ -8,6 +8,7 @@
 
 // Llamar al fichero de la conexión
 require_once 'conexion.php';
+require_once 'traduccion_colores.php';
 
 // echo "<br> Soy index.php";
 
@@ -28,9 +29,15 @@ $color = "white";
 
 
 if ($_GET) {
-    $id_color = $_GET['id'];
-    $user = $_GET['user'];
-    $color = $_GET['color'];
+
+
+    foreach ($array_colors as $esp => $eng) {
+        if ($_GET['color'] == $eng) {
+            $_GET['color'] = $esp;
+            break;
+        }
+    }
+    
 }
 
 // Cerrar la conexión
@@ -70,7 +77,7 @@ $conn = null;
                     </p>
 
                     <span>
-                        <a href="index.php?id=<?= $fila['id_color'] ?>">
+                        <a href="index.php?id=<?= $fila['id_color']?>&user=<?= str_replace(" ", "%20", $fila['usuario']) ?>&color=<?=$fila['color'] ?>">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                         <a href="delete.php?id=<?= $fila['id_color'] ?>">
@@ -89,15 +96,16 @@ $conn = null;
                 <!-- Formulario para la actualización  -->
                 <h2>Modifica tus datos</h2>
 
-                <form action="insert.php" method="post">
+                <form action="update.php" method="post">
                     <fieldset>
+                        <input type="text" name="id" value="<?= $_GET['id'] ?>" hidden>
                         <div>
-                            <label for="usuario">Tu nombre : </label>
-                        <input type="text" name="usuario" id="usuario" value= >
+                        <label for="usuario">Tu nombre : </label>
+                        <input type="text" name="usuario" id="usuario" value="<?= $_GET['user'] ?>" >
                         </div>
                         <div>
                             <label for="color">Tu color : </label>
-                            <input type="text" name="color" id="color">
+                            <input type="text" name="color" id="color" value="<?= $_GET['color'] ?>" >
                         </div>
 
                         <div>
