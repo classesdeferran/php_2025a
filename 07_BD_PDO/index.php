@@ -26,6 +26,16 @@ $array_filas = $preparacion->fetchAll();
 $color = "white";
 // print_r($array_filas);
 
+
+if ($_GET) {
+    $id_color = $_GET['id'];
+    $user = $_GET['user'];
+    $color = $_GET['color'];
+}
+
+// Cerrar la conexión
+$conn = null;
+
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +45,7 @@ $color = "white";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -53,40 +64,81 @@ $color = "white";
                     $color = "white";
                 }
                 ?>
-                <div style="background-color: <?= $fila['color'] ?>; color: <?= $color ?>;">
+                <div class="items" style="background-color: <?= $fila['color'] ?>; color: <?= $color ?>;">
                     <p>
                         <?= $fila['usuario'] ?>
                     </p>
 
+                    <span>
+                        <a href="index.php?id=<?= $fila['id_color'] ?>">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                        <a href="delete.php?id=<?= $fila['id_color'] ?>">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+
+
+                    </span>
                 </div>
 
             <?php endforeach ?>
         </section>
         <section>
-            <h2>Dinos tu color preferido</h2>
 
-            <form action="insert.php" method="post">
-                <fieldset>
-                    <div>
-                        <label for="usuario">Tu nombre : </label>
-                        <input type="text" name="usuario" id="usuario">
+            <?php if ($_GET) : ?>
+                <!-- Formulario para la actualización  -->
+                <h2>Modifica tus datos</h2>
+
+                <form action="insert.php" method="post">
+                    <fieldset>
+                        <div>
+                            <label for="usuario">Tu nombre : </label>
+                        <input type="text" name="usuario" id="usuario" value= >
+                        </div>
+                        <div>
+                            <label for="color">Tu color : </label>
+                            <input type="text" name="color" id="color">
+                        </div>
+
+                        <div>
+                            <button type="submit">Enviar datos</button>
+                            <button type="reset">Limpiar formulario</button>
+                        </div>
+
+                    </fieldset>
+                </form>
+            <?php else : ?>
+                <!-- Formulario para la inserción de datos  -->
+                <h2>Dinos tu color preferido</h2>
+
+                <form action="insert.php" method="post">
+                    <fieldset>
+                        <div>
+                            <label for="usuario">Tu nombre : </label>
+                            <input type="text" name="usuario" id="usuario">
 
 
-                    </div>
-                    <div>
-                        <label for="color">Tu color : </label>
-                        <input type="text" name="color" id="color">
-                    </div>
+                        </div>
+                        <div>
+                            <label for="color">Tu color : </label>
+                            <input type="text" name="color" id="color">
+                        </div>
 
-                    <div>
-                        <button type="submit">Enviar datos</button>
-                        <button type="reset">Limpiar formulario</button>
-                    </div>
+                        <div>
+                            <button type="submit">Enviar datos</button>
+                            <button type="reset">Limpiar formulario</button>
+                        </div>
 
-                </fieldset>
+                    </fieldset>
 
 
-            </form>
+                </form>
+
+
+            <?php endif; ?>
+
+
+
 
 
 
