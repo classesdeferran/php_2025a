@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION ['session-token'] = bin2hex(random_bytes(32));
 
 // Formas de llamar a un fichero en PHP
 // include 'nombre_fichero'; // no detiene el script
@@ -64,16 +66,23 @@ $conn = null;
         <section>
             <h2>Nuestros usuarios</h2>
             <?php foreach ($array_filas as $fila) : ?>
-
-                <?php if ($fila['color'] == "white" || $fila['color'] == "yellow" || $fila['color'] == "pink" || $fila['color'] == "grey") {
+                
+                <?php 
+                $color = "white";
+                $arrayLetrasOscuras = ["white", "yellow", "pink", "gray", "grey"];
+                if (in_array($fila['color'], $arrayLetrasOscuras)) {
                     $color = "black";
-                } else {
-                    $color = "white";
                 }
+                
+                // if ($fila['color'] == "white" || $fila['color'] == "yellow" || $fila['color'] == "pink" || $fila['color'] == "grey") {
+                //     $color = "black";
+                // } else {
+                //     $color = "white";
+                // }
                 ?>
                 <div class="items" style="background-color: <?= $fila['color'] ?>; color: <?= $color ?>;">
                     <p>
-                        <?= $fila['usuario'] ?>
+                        <?= htmlspecialchars($fila['usuario'], ENT_QUOTES, 'UTF-8')   ?>
                     </p>
 
                     <span>
@@ -96,7 +105,7 @@ $conn = null;
                 <!-- Formulario para la actualización  -->
                 <h2>Modifica tus datos</h2>
 
-                <form action="update.php" method="post">
+                <form action="update.php" method="post" id="form_update">
                     <fieldset>
                         <input type="text" name="id" value="<?= $_GET['id'] ?>" hidden>
                         <div>
@@ -110,7 +119,9 @@ $conn = null;
 
                         <div>
                             <button type="submit">Enviar datos</button>
-                            <button type="reset">Limpiar formulario</button>
+                            <button type="button" id="resetButton">Limpiar formulario</button>
+                            
+
                         </div>
 
                     </fieldset>
@@ -121,11 +132,15 @@ $conn = null;
 
                 <form action="insert.php" method="post">
                     <fieldset>
+                        <!-- Token de sesión -->
+                <input type="hidden" name="session-token" value="<?= $_SESSION ['session-token'] ?>" >
+                        <!-- HoneyPot -->
+                         <input type="text" name="web" style="display:none">
+
+
                         <div>
                             <label for="usuario">Tu nombre : </label>
                             <input type="text" name="usuario" id="usuario">
-
-
                         </div>
                         <div>
                             <label for="color">Tu color : </label>
@@ -153,5 +168,7 @@ $conn = null;
         </section>
     </main>
 </body>
+
+<script src="js/colores.js"></script>
 
 </html>
