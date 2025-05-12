@@ -31,25 +31,33 @@ formInsert.addEventListener("submit", (e) => {
     return;
   }
 
+  // Expresión regular que se debe cumplir
+  // Por tanto, si no lo hacen, es un error
   const regex = /[a-zA-ZÇáéíóúàèìòùÁÉÍÓÚÀÈÌÒÙüñç\s]+/;
+
+  // Expresiones que NO se deben cumplir:
   const regex1 = /\W+/; // El símbolo \W representa cualquier carácter que no sea una letra, un número o un guion bajo
   const regex2 = /\d+/;
-  const regex3 = /\s+/ // El símbolo \d representa cualquier dígito
 
-// if ( (regex1.test(usuario) || regex2.test(usuario)) && (regex1.test(color) || regex2.test(color))) {
-//     document.getElementById("errorUsuario").textContent =
-//       "Hay que poner un texto válido";
-//     document.getElementById("errorColor").textContent =
-//       "Hay que poner un texto válido";  
-//     return;
-//   }
+  // Si se cumple lo siguiente es que hay un error en el contenido del input 
+  reglaUsuario = (regex1.test(usuario) || regex2.test(usuario)) && (!regex.test(usuario))
+  reglaColor = (regex1.test(color) || regex2.test(color)) && (!regex.test(color))
+  
 
-  if ((regex1.test(usuario) || regex2.test(usuario)) && (!regex.test(usuario))) {
+if ( reglaUsuario && reglaColor) {
+    document.getElementById("errorUsuario").textContent =
+      "Hay que poner un texto válido";
+    document.getElementById("errorColor").textContent =
+      "Hay que poner un texto válido";  
+    return;
+  }
+
+  if (reglaUsuario) {
     document.getElementById("errorUsuario").textContent =
       "Hay que poner un texto válido";
     return;
   }
-  if ((regex1.test(color) || regex2.test(color))&& (!regex.test(color)) ) {
+  if (reglaColor ) {
     document.getElementById("errorColor").textContent =
       "Hay que poner un texto válido";
     return;
