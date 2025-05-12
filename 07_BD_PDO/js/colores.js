@@ -31,14 +31,25 @@ formInsert.addEventListener("submit", (e) => {
     return;
   }
 
-  const regex = /[a-zA-ZÇáéíóúàèìòùÁÉÍÓÚñç\s]+/;
+  const regex = /[a-zA-ZÇáéíóúàèìòùÁÉÍÓÚÀÈÌÒÙüñç\s]+/;
+  const regex1 = /\W+/; // El símbolo \W representa cualquier carácter que no sea una letra, un número o un guion bajo
+  const regex2 = /\d+/;
+  const regex3 = /\s+/ // El símbolo \d representa cualquier dígito
 
-  if (!regex.test(usuario)) {
+// if ( (regex1.test(usuario) || regex2.test(usuario)) && (regex1.test(color) || regex2.test(color))) {
+//     document.getElementById("errorUsuario").textContent =
+//       "Hay que poner un texto válido";
+//     document.getElementById("errorColor").textContent =
+//       "Hay que poner un texto válido";  
+//     return;
+//   }
+
+  if ((regex1.test(usuario) || regex2.test(usuario)) && (!regex.test(usuario))) {
     document.getElementById("errorUsuario").textContent =
       "Hay que poner un texto válido";
     return;
   }
-  if (!regex.test(color)) {
+  if ((regex1.test(color) || regex2.test(color))&& (!regex.test(color)) ) {
     document.getElementById("errorColor").textContent =
       "Hay que poner un texto válido";
     return;
@@ -49,5 +60,36 @@ formInsert.addEventListener("submit", (e) => {
     return;
   }
 
-  alert("Hoy es viernes");
-});
+  // alert("Hoy es viernes");
+
+const datos = new URLSearchParams()
+datos.append("color", color);
+datos.append("usuario", usuario);
+datos.append("session-token", sessionToken);
+datos.append("web", web);
+
+fetch ("../insert.php", { 
+  method: "POST",
+  body: datos.toString(),
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+})
+  .then((response) => response.text())
+  .then((data) => {
+    // console.log(data);
+    location.reload()
+  })
+  .catch((error) => {
+    alert("Error en la petición");
+    console.error("Error:", error);
+  });
+})
+
+  
+
+  
+
+
+
+

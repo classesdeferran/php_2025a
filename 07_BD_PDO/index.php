@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION ['session-token'] = bin2hex(random_bytes(32));
+$_SESSION ['session-token'] = bin2hex(random_bytes(64));
 
 // Formas de llamar a un fichero en PHP
 // include 'nombre_fichero'; // no detiene el script
@@ -165,6 +165,9 @@ $conn = null;
 
                 </form>
 
+                <?php if ($_SESSION['error_sesion']) : ?>
+                    <p>Error en la sesión</p>
+                <?php endif; ?>
 
             <?php endif; ?>
 
@@ -180,3 +183,6 @@ $conn = null;
 <script src="js/colores.js"></script>
 
 </html>
+<?php
+
+$_SESSION['error_sesion'] = false;
