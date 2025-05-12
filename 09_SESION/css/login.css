@@ -1,86 +1,126 @@
 @font-face {
-    font-family: 'Lato';
-    src: url('../fonts/Lato/Lato-Regular.woff2') format('woff2'),
-        url('../fonts/Lato/Lato-Regular.woff') format('woff'),
-        url('../fonts/Lato/Lato-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Regular.woff2") format("woff2"),
+    url("../fonts/Lato/Lato-Regular.woff") format("woff"),
+    url("../fonts/Lato/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Lato, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato, Arial, Helvetica, sans-serif;
 }
 h1 {
-    text-align: center;
-    margin: 1rem 0;
+  text-align: center;
+  margin: 1rem 0;
 }
 
 main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  label {
+    display: block;
+    margin: 1rem 0 0.2rem;
+  }
+
+  fieldset {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 300px;
+  }
+
+  div {
+    input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .botones {
+    margin-top: 2rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 
-    label {
-        display: block;
-        margin: 1rem 0 0.2rem;
+    &:hover {
+      background-color: #0056b3;
     }
-
-    fieldset {
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 1rem;
-        width: 300px;
+  }
+  button[type="submit"] {
+    background-color: rgb(0, 255, 85);
+    color: black;
+    &:hover {
+      background-color: #00320d;
+      color: white;
     }
-
-    div {
-        input {
-            width: 100%;
-            padding: 0.5rem 1rem;            
-        }
+  }
+  button[type="reset"] {
+    background-color: rgba(212, 82, 251, 0.998);
+    color: black;
+    &:hover {
+      background-color: rgba(93, 25, 113, 0.998);
+      color: white;
     }
-
-    .botones {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-    }
-    button {
-        width: 100%;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #0056b3;
-        }
-    }
-    button[type="submit"] {
-        background-color: rgb(0, 255, 85);
-        color: black;
-        &:hover {
-            background-color: #00320d;
-            color:white
-        }
-    }
-        button[type="reset"] {
-        background-color: rgba(212, 82, 251, 0.998);
-        color: black;
-        &:hover {
-            background-color: rgba(93, 25, 113, 0.998);
-            color:white
-        }
-    }
-
+  }
 }
 
 .error_cuenta {
-    height: 2rem;
-    color: red;
+  height: 2rem;
+  color: red;
+}
+
+.index-main {
+  background-color: aqua;
+}
+
+.index-nav {
+  height: 5rem;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  ul {
+    display: flex;
+
+    gap: 1rem;
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: 1.5rem;
+
+      &:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+    }
+  }
+}
+
+dialog {
+    margin: 0 auto;
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
