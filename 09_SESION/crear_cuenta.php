@@ -39,7 +39,7 @@ require_once 'pdo_bind_connection.php';
                     <input type="tel" name="telefono" id="telefono">
                 </div>
                 <div class="error_cuenta">
-                    <?php if ($_SESSION['error']): ?>
+                    <?php if ($_SESSION['error_cuenta']): ?>
                         <p>Error en los datos</p>
                     <?php endif; ?>
                 </div>
@@ -63,4 +63,4 @@ require_once 'pdo_bind_connection.php';
 
 <?php
 
-$_SESSION['error'] = false;
+$_SESSION['error_cuenta'] = false;
