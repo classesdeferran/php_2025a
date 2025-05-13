@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 session_start();
 require_once 'pdo_bind_connection.php';
 
@@ -17,12 +17,11 @@ require_once 'pdo_bind_connection.php';
             <ul>            
                 <li><a href="crear_cuenta.php">Crear cuenta</a></li>
                 <li><a href="login.php">Iniciar sesión</a></li>
-
             </ul>
         </nav>
     </header>
     <main class="index-main">
-    <dialog id="login" open closedby="true">
+    <dialog id="login" open closedby="any">
                 <form action="login.php" method="post">
             <fieldset>
                 <h1>Iniciar sesión</h1>
@@ -33,6 +32,9 @@ require_once 'pdo_bind_connection.php';
                 <div>
                     <label for="password">Contraseña:</label>
                     <input type="password" name="password" id="password">
+                </div>
+                <div>
+                    <a href="crear_cuenta.php">Crear cuenta</a>
                 </div>
                  
                 <div class="error_cuenta">
@@ -49,7 +51,7 @@ require_once 'pdo_bind_connection.php';
                     <button type="submit">Enviar</button>
                     <button type="reset">Borrar</button>
                 </div>
-                <a href="index.php">Volver</a>
+                
 
             </fieldset>
         </form>

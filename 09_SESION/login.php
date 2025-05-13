@@ -35,7 +35,7 @@ $usuarioExistente = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuarioExistente) {
     $_SESSION['user_inexistente'] = true;
-    header('Location: index.php');
+    header('Location: crear_cuenta.php');
     exit();
 }
 
@@ -47,3 +47,5 @@ if (!password_verify($password, $usuarioExistente['password'])) {
 }
 
 echo "Todo OK";
+
+header('Location: colores/index.php');
