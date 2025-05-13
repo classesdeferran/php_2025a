@@ -48,5 +48,6 @@ if (!password_verify($password, $usuarioExistente['password'])) {
 
 echo "Todo OK";
 
+$_SESSION['usuario'] = $usuarioExistente['usuario'];
 $_SESSION['id_usuario'] = $usuarioExistente['id_usuario'];
 header('Location: colores/index.php');

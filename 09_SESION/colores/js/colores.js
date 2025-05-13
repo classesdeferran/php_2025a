@@ -11,6 +11,7 @@ formInsert.addEventListener("submit", (e) => {
   const usuario = formInsert["usuario"].value.trim();
   const web = formInsert["web"].value;
   const sessionToken = formInsert["session-token"].value;
+  const id_usuario = formInsert["id_usuario"].value;
 
   // Validar los campos
   if (usuario === "" && color === "") {
@@ -33,7 +34,7 @@ formInsert.addEventListener("submit", (e) => {
 
   // Expresión regular que se debe cumplir
   // Por tanto, si no lo hacen, es un error
-  const regex = /[a-zA-ZÇáéíóúàèìòùÁÉÍÓÚÀÈÌÒÙüñç\s]+/;
+  const regex = /[a-zA-ZÇáéíóúàèìòùÁÉÍÓÚÀÈÌÒÙüñç\s#]+/;
 
   // Expresiones que NO se deben cumplir:
   const regex1 = /\W+/; // El símbolo \W representa cualquier carácter que no sea una letra, un número o un guion bajo
@@ -75,8 +76,9 @@ datos.append("color", color);
 datos.append("usuario", usuario);
 datos.append("session-token", sessionToken);
 datos.append("web", web);
+datos.append("id_usuario", id_usuario);
 
-fetch ("../insert.php", { 
+fetch ("insert.php", { 
   method: "POST",
   body: datos.toString(),
   headers: {
@@ -85,7 +87,7 @@ fetch ("../insert.php", {
 })
   .then((response) => response.text())
   .then((data) => {
-    // console.log(data);
+    console.log(data);
     location.reload()
   })
   .catch((error) => {

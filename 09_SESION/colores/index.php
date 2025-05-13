@@ -62,7 +62,13 @@ $pdo = null;
 
 <body>
     <header>
-        <h1>Nuestros colores preferidos</h1>
+        <div>
+                    <h1>Nuestros colores preferidos</h1>
+        <p>
+        <span>¡Hola <?= $_SESSION['usuario'] ?>!</span>
+        </p>
+        </div>
+
     </header>
     <main>
         <section>
@@ -142,8 +148,9 @@ $pdo = null;
                     <fieldset>
                         <!-- Token de sesión -->
                 <input type="hidden" name="session-token" value="<?= $_SESSION ['session-token'] ?>" >
+                <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>" >
                         <!-- HoneyPot -->
-                         <input type="text" name="web" style="display:none">
+                        <input type="text" name="web" style="display:none">
 
 
                         <div>
