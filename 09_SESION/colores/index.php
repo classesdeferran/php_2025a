@@ -16,10 +16,11 @@ require_once 'traduccion_colores.php';
 // echo "<br> Soy index.php";
 
 // Definir la instrucción
-$select = "SELECT * FROM colores;";
+$select = "SELECT * FROM colores where id_usuario = :id_usuario;";
 
 // Preparación
 $preparacion = $pdo->prepare($select);
+$preparacion->bindParam(':id_usuario', $_SESSION['id_usuario'], PDO::PARAM_INT);
 // Ejecución
 $preparacion->execute();
 
