@@ -1,4 +1,5 @@
 <?php
+// Se encarga de la lógica del acceso de los usuarios
 
 session_start();
 require_once 'pdo_bind_connection.php';

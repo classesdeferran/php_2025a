@@ -12,14 +12,9 @@ require_once 'pdo_bind_connection.php';
     <title>Colores</title>
 </head>
 <body>
-    <header>
-        <nav class="index-nav">
-            <ul>            
-                <li><a href="crear_cuenta.php">Crear cuenta</a></li>
-                <li><a href="login.php">Iniciar sesión</a></li>
-            </ul>
-        </nav>
-    </header>
+
+    <?php include_once 'modulos/header.php'; ?>
+
     <main class="index-main">
     <dialog id="login" open closedby="any">
                 <form action="login.php" method="post">

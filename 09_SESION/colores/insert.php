@@ -4,6 +4,8 @@ require_once 'conexion.php';
 require_once 'traduccion_colores.php';
 session_start();
 
+
+
 // try {
 //     hash_equals($_SESSION['session-token'], $_POST['session-token']);
 // } catch (Exception $e) {

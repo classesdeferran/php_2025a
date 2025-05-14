@@ -96,6 +96,31 @@ fetch ("insert.php", {
   });
 })
 
+
+// CERRAR SESIÓN POR INACTIVIDAD
+const tiempoInactividad = 300000; // 5 minutos, se mide en milisegundos
+
+let temporizador;
+
+function redirigir() {
+  window.location.href = "../../logout.php";
+}
+
+function resetearTemporizador() {
+  clearTimeout(temporizador); // Limpiar el temporizador anterior
+  temporizador = setTimeout(redirigir, tiempoInactividad); // Reiniciar el temporizador
+}
+
+// Detectar actividad del usuario
+window.addEventListener("keydown", resetearTemporizador);
+window.addEventListener("mousemove", resetearTemporizador);
+window.addEventListener("scroll", resetearTemporizador);
+window.addEventListener("click", resetearTemporizador);
+window.addEventListener("touchstart", resetearTemporizador);
+
+resetearTemporizador(); // Iniciar el temporizador al cargar la página
+
+
   
 
   
