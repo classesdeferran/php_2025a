@@ -28,12 +28,25 @@ header {
     text-align: left;
   }
 
-  div {
+  > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: var(--desktop-width);
     margin: 0 auto;
+  
+
+    div {
+      display: flex;
+      justify-content: right;
+      gap: 1rem;
+      align-items: center;
+
+      span {
+        font-size: 1.2rem;
+        color: white;
+      }
+    }
 
     #btnLogout {
       background-color: transparent;
@@ -140,69 +153,57 @@ main {
   height: 1.5rem;
 }
 
-
-/*
-main {
+.items {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  justify-content: space-between;
 
-  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
 
-  
+
+.main-colores {
+  div {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  form {
+  margin: 0.5rem 0;
+  width: 100%;
 
   div {
-    input {
-      width: 100%;
-      padding: 0.5rem 1rem;
-    }
+    border: 0;
   }
 
-  
-}
+  label {
+    display: block;
+  }
 
-.error_cuenta {
-  height: 2rem;
-  color: red;
-}
+  input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
 
-
-
-.index-nav {
-  height: 5rem;
-  background-color: antiquewhite;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-
-  ul {
+  div:last-child {
     display: flex;
+    justify-content: space-between;
+  }
 
-    gap: 1rem;
-    list-style: none;
+  button[type="submit"] {
+    background-color: lawngreen;
+    padding: 0.5rem 1rem;
+    color: black;
+  }
 
-    a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      padding: 1rem;
-      border-radius: 5px;
-      font-size: 1.5rem;
-
-      &:hover {
-        background-color: #0056b3;
-        color: white;
-      }
-    }
+  button[type="reset"] {
+    background-color: purple;
+    padding: 0.5rem 1rem;
+    color: white;
   }
 }
-
-dialog {
-  margin: 0 auto;
- 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-*/
+

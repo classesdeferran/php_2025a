@@ -3,6 +3,7 @@
 session_start();
 require_once 'pdo_bind_connection.php';
 
+// Para mostrar imágenes de manera aleatoria
 $num_random = random_int(0, 4);
 
 $imagenes = [
@@ -27,6 +28,9 @@ $imagenes = [
         'alt' => 'pared pintada con colores vivos'
     ]
     ];
+
+include_once 'modulos/idioma.php';
+// echo $idioma;
 
 ?>
 
@@ -74,6 +78,6 @@ $imagenes = [
 
 
 </body>
-
+<script src="js/index.js"></script>
 </html>
 <?php

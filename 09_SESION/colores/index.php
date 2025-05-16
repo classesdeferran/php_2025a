@@ -65,9 +65,9 @@ $pdo = null;
 
  <?php include_once '../modulos/header.php'; ?>
 
-    <main>
-        <section>
-            <h2>Nuestros usuarios</h2>
+    <main class="main-colores">
+        <section >
+            <h2>Nuestros amigos</h2>
             <?php foreach ($array_filas as $fila) : ?>
                 
                 <?php 
@@ -106,7 +106,7 @@ $pdo = null;
 
             <?php if ($_GET) : ?>
                 <!-- Formulario para la actualización  -->
-                <h2>Modifica tus datos</h2>
+                <h2>Modifica los datos</h2>
 
                 <form action="update.php" method="post" id="form_update">
                     <fieldset>
@@ -146,8 +146,6 @@ $pdo = null;
                 <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>" >
                         <!-- HoneyPot -->
                         <input type="text" name="web" style="display:none">
-
-
                         <div>
                             <label for="usuario">Tu nombre : </label>
                             <input type="text" name="usuario" id="usuario">
@@ -169,9 +167,7 @@ $pdo = null;
 
                 </form>
 
-                <?php if ($_SESSION['error_sesion']) : ?>
-                    <p>Error en la sesión</p>
-                <?php endif; ?>
+
 
             <?php endif; ?>
 
