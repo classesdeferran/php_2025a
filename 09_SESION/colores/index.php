@@ -124,8 +124,7 @@ $pdo = null;
                             <button type="submit">Enviar datos</button>
                             <a href="index.php?id=<?= $_GET['id'] ?>?>&user=%20&color=%20">
                             Limpiar formulario
-                        </a>
-                    
+                        </a>                
                             
 
                         </div>
@@ -181,6 +180,7 @@ $pdo = null;
 </body>
 
 <script src="js/colores.js"></script>
+<script src="../js/index.js"></script>
 
 </html>
 <?php
