@@ -1,20 +1,3 @@
-<?php
-
-session_start();
-require_once 'pdo_bind_connection.php';
-
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <?php include_once 'etiquetas_meta.php'; ?>
-    <title>Crear Cuenta</title>
-</head>
-
-<body>
-    <main>
         <form action="insert_user.php" method="post">
             <fieldset>
                 <h1>Crear cuenta</h1>
@@ -38,36 +21,17 @@ require_once 'pdo_bind_connection.php';
                     <label for="telefono">Teléfono:</label>
                     <input type="tel" name="telefono" id="telefono">
                 </div>
-                <div class="error_cuenta">
-                    <?php if ($_SESSION['error_cuenta']): ?>
-                        <p>Error en los datos</p>
-                    <?php endif; ?>
-                </div>
-                <div class="error_cuenta">
-                    <?php if ($_SESSION['user_repe']): ?>
-                        <p>Usuario o contraseña incorrectos</p>
-                    <?php endif; ?>
+                <div class="div-enlaces">
+                    <a href="index.php?formulario=login">Ya tengo cuenta</a>
+
                 </div>
                 <div class="botones">
                     <button type="submit">Enviar</button>
                     <button type="reset">Borrar</button>
                 </div>
-                <a href="index.php">Volver</a>
+              
 
             </fieldset>
 
 
-
-
-
         </form>
-    </main>
-
-</body>
-
-</html>
-
-<?php
-
-$_SESSION['error_cuenta'] = false;
-$_SESSION['user_repe'] = false;

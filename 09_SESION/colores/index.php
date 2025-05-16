@@ -53,11 +53,12 @@ $pdo = null;
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include_once '../modulos/etiquetas_meta.php'; ?>
+
+
     <title>Colores</title>
-    <link rel="stylesheet" href="../css/fontawesome.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>

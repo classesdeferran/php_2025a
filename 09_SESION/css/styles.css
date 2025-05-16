@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Regular.woff2") format("woff2"),
+    url("../fonts/Lato/Lato-Regular.woff") format("woff"),
+    url("../fonts/Lato/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --desktop-width: 1200px;
+}
+
+header {
+  background-color: rgb(20, 20, 20);
+  color: white;
+  padding: 1rem 0;
+
+  h1 {
+    text-align: left;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--desktop-width);
+    margin: 0 auto;
+
+    #btnLogout {
+      background-color: transparent;
+      border: 1px solid white;
+      border-radius: 5px;
+      color: white;
+      padding: 0.5rem 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
+
+main {
+  max-width: var(--desktop-width);
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  form {
+    fieldset {
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 1rem;
+      width: 300px;
+    }
+    div {
+      input {
+        width: 100%;
+        padding: 0.5rem 1rem;
+      }
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.2rem;
+    }
+
+    .botones {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+    button[type="submit"] {
+      background-color: rgb(0, 255, 85);
+      color: black;
+      &:hover {
+        background-color: #00320d;
+        color: white;
+      }
+    }
+    button[type="reset"] {
+      background-color: rgba(212, 82, 251, 0.998);
+      color: black;
+      &:hover {
+        background-color: rgba(93, 25, 113, 0.998);
+        color: white;
+      }
+    }
+
+    .div-enlaces {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    a {
+      display: block;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .condiciones-input {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+#errorUsuario, #errorPassword {
+  color: red;
+  font-size: 0.8rem;
+  height: 1.5rem;
+}
+
+
+/*
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  
+
+  
+
+  div {
+    input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  
+}
+
+.error_cuenta {
+  height: 2rem;
+  color: red;
+}
+
+
+
+.index-nav {
+  height: 5rem;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  ul {
+    display: flex;
+
+    gap: 1rem;
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: 1.5rem;
+
+      &:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+    }
+  }
+}
+
+dialog {
+  margin: 0 auto;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+*/

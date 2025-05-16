@@ -1,61 +1,79 @@
 <?php
-error_reporting(0);
+
 session_start();
 require_once 'pdo_bind_connection.php';
+
+$num_random = random_int(0, 4);
+
+$imagenes = [
+    [
+        'src' => 'img/espiral.jpg',
+        'alt' => 'espiral de colores'
+    ],
+    [
+        'src' => 'img/iris.jpg',
+        'alt' => 'degradado de colores'
+    ],
+    [
+        'src' => 'img/lapices.jpg',
+        'alt' => 'lápices de colores'
+    ],
+    [
+        'src' => 'img/manos.webp',
+        'alt' => 'manos pintadas de colores'
+    ],
+    [
+        'src' => 'img/pared.jpg',
+        'alt' => 'pared pintada con colores vivos'
+    ]
+    ];
 
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <?php include_once 'etiquetas_meta.php'; ?>
+    <?php include_once 'modulos/etiquetas_meta.php'; ?>
+    <link rel="stylesheet" href="css/styles.css">
     <title>Colores</title>
 </head>
+
 <body>
 
     <?php include_once 'modulos/header.php'; ?>
 
     <main class="index-main">
-    <dialog id="login" open closedby="any">
-                <form action="login.php" method="post">
-            <fieldset>
-                <h1>Iniciar sesión</h1>
-                <div>
-                    <label for="usuario">Nombre:</label>
-                    <input type="text" name="usuario" id="usuario">
-                </div>
-                <div>
-                    <label for="password">Contraseña:</label>
-                    <input type="password" name="password" id="password">
-                </div>
-                <div>
-                    <a href="crear_cuenta.php">Crear cuenta</a>
-                </div>
-                 
-                <div class="error_cuenta">
-                    <?php if ($_SESSION['error_cuenta']): ?>
-                        <p>Error en los datos</p>
-                    <?php endif; ?>
-                </div>
-                <div class="error_cuenta">
-                    <?php if ($_SESSION['user_inexistente']): ?>
-                        <p>Usuario o contraseña incorrectos</p>
-                    <?php endif; ?>
-                </div>
-                <div class="botones">
-                    <button type="submit">Enviar</button>
-                    <button type="reset">Borrar</button>
-                </div>
-                
 
-            </fieldset>
-        </form>
-    </dialog>
+        <section>
+            <img src="<?= $imagenes[$num_random]['src']?>" alt="<?= $imagenes[$num_random]['alt']?>" class="img-colores">
+        </section>
+        <section>
+            <?php
+
+            $formulario = $_GET['formulario'] ?? 'login';
+            switch ($formulario) {
+                case 'login':
+                    include_once 'modulos/form_login.php';
+                    break;
+                case 'crear-cuenta':
+                    include_once 'modulos/form_crear_cuenta.php';
+                    break;
+                case 'reset':
+                    include_once 'modulos/form_reset.php';
+                    break;
+                default:
+                    include_once 'modulos/form_login.php';
+                    break;
+            }
+
+
+            ?>
+        </section>
     </main>
 
 
 </body>
+
 </html>
 <?php
-$_SESSION['error_cuenta'] = false;
-$_SESSION['user_inexistente'] = false;
