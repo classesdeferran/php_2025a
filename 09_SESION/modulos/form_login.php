@@ -17,8 +17,7 @@
                         <a href="index.php?formulario=crear-cuenta">No tengo cuenta todavía</a>
                         <a href="index.php?formulario=reset">No recuerdo la contraseña</a>
                     </div>
-
-                    
+                   
                     
                     <div class="botones">
                         <button type="submit">Enviar</button>

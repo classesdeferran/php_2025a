@@ -1,6 +1,6 @@
             <form action="reset_password.php" method="post">
                 <fieldset>
-                    <h2>Iniciar sesión</h2>
+                    <h2>Nueva contraseña</h2>
                     <div>
                         <label for="usuario">Introduce tu nombre de usuario o email:</label>
                         <input type="text" name="usuario" id="usuario" minlength="4" maxlength="15" >
@@ -10,7 +10,7 @@
                     
                     <div class="div-enlaces">
                         <a href="index.php?formulario=login">Ya he recordado la contraseña</a>
-                        <a href="index.php?formulario=crear-cuenta">No tengo cuenta todavía</a>
+                        <a href="index.php?=crear-cuenta">No tengo cuenta todavía</a>
                     
                     </div>
 

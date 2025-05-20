@@ -89,7 +89,7 @@ $pdo = null;
                     </p>
 
                     <span>
-                        <a href="index.php?id=<?= $fila['id_color']?>&user=<?= str_replace(" ", "%20", $fila['usuario']) ?>&color=<?=$fila['color'] ?>">
+                        <a href="index.php?formulario=update&id=<?= $fila['id_color']?>&user=<?= str_replace(" ", "%20", $fila['usuario']) ?>&color=<?=$fila['color'] ?>">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                         <a href="delete.php?id=<?= $fila['id_color'] ?>">
@@ -103,78 +103,19 @@ $pdo = null;
             <?php endforeach ?>
         </section>
         <section>
+        <?php
+            $formulario = $_GET['formulario'] ?? "insert";
 
-            <?php if ($_GET) : ?>
-                <!-- Formulario para la actualización  -->
-                <h2>Modifica los datos</h2>
+            switch ($formulario) {
+                case "insert":
+                    include_once "../modulos/form_insert_colores.php";
+                    break;
+                case "update":
+                    include_once "../modulos/form_update_colores.php";
+                    break;
+            }
 
-                <form action="update.php" method="post" id="form_update">
-                    <fieldset>
-                        <input type="text" name="id" value="<?= $_GET['id'] ?>" hidden>
-                        <div>
-                        <label for="usuario">Tu nombre : </label>
-                        <input type="text" name="usuario" id="usuario" value="<?= $_GET['user'] ?>" >
-                        </div>
-                        <div>
-                            <label for="color">Tu color : </label>
-                            <input type="text" name="color" id="color" value="<?= $_GET['color'] ?>" >
-                        </div>
-
-                        <div>
-                            <button type="submit">Enviar datos</button>
-                            <a href="index.php?id=<?= $_GET['id'] ?>?>&user=%20&color=%20">
-                            Limpiar formulario
-                        </a>                
-                            
-
-                        </div>
-
-                    </fieldset>
-                </form>
-
-
-            <?php else : ?>
-                <!-- Formulario para la inserción de datos  -->
-                <h2>Dinos tu color preferido</h2>
-
-                <!-- <form action="insert.php" method="post"> -->
-                    <form name="formInsert">
-                    <fieldset>
-                        <!-- Token de sesión -->
-                <input type="hidden" name="session-token" value="<?= $_SESSION ['session-token'] ?>" >
-                <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>" >
-                        <!-- HoneyPot -->
-                        <input type="text" name="web" style="display:none">
-                        <div>
-                            <label for="usuario">Tu nombre : </label>
-                            <input type="text" name="usuario" id="usuario">
-                            <p id="errorUsuario"></p>
-                        </div>
-                        <div>
-                            <label for="color">Tu color : </label>
-                            <input type="text" name="color" id="color">
-                            <p id="errorColor"></p>
-                        </div>
-
-                        <div>
-                            <button type="submit">Enviar datos</button>
-                            <button type="reset">Limpiar formulario</button>
-                        </div>
-
-                    </fieldset>
-
-
-                </form>
-
-
-
-            <?php endif; ?>
-
-
-
-
-
-
+        ?>
         </section>
     </main>
 </body>
