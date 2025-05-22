@@ -49,6 +49,23 @@ if (!password_verify($password, $usuarioExistente['password'])) {
 
 echo "Todo OK";
 
+// Sintaxis básica de cookie
+setcookie("usuario", $usuarioExistente['usuario'], time() + (60), "/" ); // tiempo en segundos
+
+/*
+// Sintaxis detallada de cookie
+setcookie(
+    "usuario", 
+    $usuarioExistente['usuario'], [
+        "expires" => time() + (60),
+        "httponly" => true, // acceder sólo desde el servidor
+        "secure" => true,  // la cookie solo se puede enviar por https
+        "path" => "/", // la cookie es accesible desde cualquier ruta del proyecto
+        "samesite" => "Strict" // disponer de la cookie solo si se llega desde la barra de navegación ("Lax" desde cualquier sitio)
+    ]);
+*/
+
+
 $_SESSION['usuario'] = $usuarioExistente['usuario'];
 $_SESSION['id_usuario'] = $usuarioExistente['id_usuario'];
 header('Location: colores/index.php');

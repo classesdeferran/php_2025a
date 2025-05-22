@@ -23,30 +23,41 @@ header {
   background-color: rgb(20, 20, 20);
   color: white;
   padding: 1rem 0;
+  display: flex;
+  justify-content: space-around;
 
   h1 {
     text-align: left;
+  }
+
+  img {
+    max-width: 50px;
+  }
+
+  .header-left {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .header-right {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+    align-items: center;
+
+    span {
+      font-size: 1.2rem;
+      color: white;
+    }
   }
 
   > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: var(--desktop-width);
+    width: var(--desktop-width);
     margin: 0 auto;
-  
-
-    div {
-      display: flex;
-      justify-content: right;
-      gap: 1rem;
-      align-items: center;
-
-      span {
-        font-size: 1.2rem;
-        color: white;
-      }
-    }
 
     #btnLogout {
       background-color: transparent;
@@ -147,7 +158,8 @@ main {
   }
 }
 
-#errorUsuario, #errorPassword {
+#errorUsuario,
+#errorPassword {
   color: red;
   font-size: 0.8rem;
   height: 1.5rem;
@@ -163,7 +175,6 @@ main {
   }
 }
 
-
 .main-colores {
   div {
     margin: 0.5rem 0;
@@ -172,38 +183,37 @@ main {
     border-radius: 5px;
   }
   form {
-  margin: 0.5rem 0;
-  width: 100%;
-
-  div {
-    border: 0;
-  }
-
-  label {
-    display: block;
-  }
-
-  input {
+    margin: 0.5rem 0;
     width: 100%;
-    padding: 0.5rem 1rem;
-  }
 
-  div:last-child {
-    display: flex;
-    justify-content: space-between;
-  }
+    div {
+      border: 0;
+    }
 
-  button[type="submit"] {
-    background-color: lawngreen;
-    padding: 0.5rem 1rem;
-    color: black;
-  }
+    label {
+      display: block;
+    }
 
-  button[type="reset"] {
-    background-color: purple;
-    padding: 0.5rem 1rem;
-    color: white;
+    input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+    }
+
+    div:last-child {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button[type="submit"] {
+      background-color: lawngreen;
+      padding: 0.5rem 1rem;
+      color: black;
+    }
+
+    button[type="reset"] {
+      background-color: purple;
+      padding: 0.5rem 1rem;
+      color: white;
+    }
   }
 }
-}
-

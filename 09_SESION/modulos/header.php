@@ -1,12 +1,22 @@
     <header>
 
     <div>
-        <h1>Nuestros colores preferidos</h1>
+        <div class="header-left">
+             <?php if (!isset($_SESSION['usuario'])) : ?>
+            <img src="icons/paint_114370.png" alt="">
+             <?php endif; ?>
+             <h1>Nuestros colores preferidos</h1>
+        </div>
+        
 
-        <div>
-            <?php if (isset($_SESSION['usuario'])) : ?>
-                <span>¡Hola <?= $_SESSION['usuario'] ?>!</span>
-                <form action="../logout.php" method="post">
+        <div class="header-right">
+            <?php if (isset($_COOKIE['usuario'])) : ?>
+                <span>¡Hola <?= $_COOKIE['usuario'] ?>!</span>
+            <?php else : ?>
+                <span>Por favor, inicia sesión</span>
+            <?php endif; ?>
+            <form action="../logout.php" method="post">
+                    <?php if (isset($_SESSION['usuario'])) : ?>                
                     <button id="btnLogout" type="submit"><i class="fa-solid fa-door-open"></i></button>
                 </form>
             <?php endif; ?>

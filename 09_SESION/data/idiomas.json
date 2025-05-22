@@ -1,15 +1,21 @@
 {
     "es": {
         "lang": "es",
-        "title": "Nuestros colores preferidos"
+        "title": "Nuestros colores preferidos",
+        "init-session" : "Iniciar Sesión",
+        "name": "Nombre"
     },
     "en": {
         "lang": "en",
-        "title": "Our favorite colors"
+        "title": "Our favorite colors",
+        "init-session" : "Login",
+        "name": "Name"
     },
     "ca": {
         "lang": "ca",
-        "title": "Els nostres colors preferits"
+        "title": "Els nostres colors preferits",
+        "init-session" : "Iniciar Sessió",
+        "name": "Nom"
     }
 }
 

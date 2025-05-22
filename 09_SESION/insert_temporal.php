@@ -56,15 +56,26 @@ if ($usuarioExistente) {
 $hash = password_hash($password, PASSWORD_DEFAULT);
 // echo $hash . "<br>";
 
-$insert = "INSERT INTO usuarios (usuario, password, email, telefono) VALUES (:usuario, :password, :email, :telefono)";
+//  Creación de un token de 128 caracteres
+$token = bin2hex(random_bytes(64));
+
+// Establecer la caducidad
+$caducidad = new DateTime();
+$caducidad->add(new DateInterval('PT2H')); // caducidad de 2 horas
+$caducidad = $caducidad->format('Y-m-d H:i:s'); 
+
+$insert = "INSERT INTO temporal (usuario, password, email, telefono, token_registro, token_caducidad) ";
+$insert .= "VALUES (:usuario, :password, :email, :telefono, :token, :caducidad)";
+
 $stmt = $pdo->prepare($insert);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':password', $hash, PDO::PARAM_STR);
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+$stmt->bindParam(':token', $token, PDO::PARAM_STR);
+$stmt->bindParam(':caducidad', $caducidad, PDO::PARAM_STR);
 $stmt->execute();
 
 echo "Usuario insertado correctamente<br>";
 
 
-header('Location: index.php');
