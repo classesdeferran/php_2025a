@@ -76,6 +76,14 @@ $stmt->bindParam(':token', $token, PDO::PARAM_STR);
 $stmt->bindParam(':caducidad', $caducidad, PDO::PARAM_STR);
 $stmt->execute();
 
-echo "Usuario insertado correctamente<br>";
+// echo "Usuario insertado correctamente<br>";
+$body = "<p>Apreciado/Apreciada $usuario,</p><br>";
+$body .= "<p>Te envíamos el enlace para que puedas acceder a la aplicación:</p><br>";
+$body .= "<a href='http://localhost:20000/registro.php?token=$token' > HAZ CLIC AQUÍ PORFA </a><br>";
+$body .= "<p>Puedes ignorar este correo si no has accedido a la aplicación.</p><br>";
+
+include 'email_validacion.php';
+
+header('location: index.php?formulario=revisar-correo');
 
 

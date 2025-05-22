@@ -6,7 +6,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader (created by composer, not included with PHPMailer)
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
+require_once __DIR__ . "/vendor/autoload.php";
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -15,16 +19,16 @@ try {
     //Server settings
     $mail->SMTPDebug = 0;      // 0 para no mostrar ningún mensaje               //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';  // Tu servidor SMTP                   //Set the SMTP server to send through
+    $mail->Host       = $_ENV['HOST'];  // Tu servidor SMTP                   //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'tu_cuenta_de_gmail@gmail.com';  // Tu cuenta de Gmail                   //SMTP username
-    $mail->Password   = 'contraseña_de_aplicacion';     // De tu cuenta de Gmail                          //SMTP password
+    $mail->Username   = $_ENV['USERNAME'];  // Tu cuenta de Gmail                   //SMTP username
+    $mail->Password   = $_ENV['PASSWORD'];     // De tu cuenta de Gmail                          //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
-    $mail->Port       = 587;  // Necesario para GMail              //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Port       = $_ENV['PORT'];  // Necesario para GMail              //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('remitente', 'nombre_del_remitente');           // Remitente
-    $mail->addAddress('receptor', 'nombre_del_receptor');     // Receptor
+    $mail->setFrom($_ENV['USERNAME'], 'APP COLORES');           // Remitente
+    $mail->addAddress($email, $usuario);     // Receptor
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -37,9 +41,9 @@ try {
     //Content
     $mail->CharSet = 'UTF-8';
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Prueba de envío con PHP, PHPMailer y GMail'; // Asunto del mensaje
-    $mail->Body    = '<h1>Hola Jo</h1> <p>Què tal? Correu de prova amb PHPMailer.</p> This is the HTML message body <b>in bold!</b>'; // Cuerpo del mensaje
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients'; // Cuerpo alternativo (sin HTML)
+    $mail->Subject = 'Validación de contraseña APP COLORES'; // Asunto del mensaje
+    $mail->Body    = $body; // Cuerpo del mensaje
+    $mail->AltBody = 'Necesitamos un navegador que pueda utilizar código HTML. ¿Puedes probas con otro? Gracias.'; // Cuerpo alternativo (sin HTML)
 
     $mail->send();
     echo 'Message has been sent'; // Cuando todo ha ido bien

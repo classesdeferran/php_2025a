@@ -66,6 +66,9 @@ include_once 'modulos/idioma.php';
                 case 'reset':
                     include_once 'modulos/form_reset.php';
                     break;
+                case 'revisar-correo':
+                    include_once 'modulos/revisar_cuenta_correo.php';
+                    break;
                 default:
                     include_once 'modulos/form_login.php';
                     break;
