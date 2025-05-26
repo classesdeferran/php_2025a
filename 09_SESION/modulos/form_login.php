@@ -1,4 +1,8 @@
             <form action="login.php" method="post">
+                <!-- Mensaje de bienvenida  -->
+                <?php if(isset($_GET['mensaje']) && $_GET['mensaje']=="registro_ok") : ?>
+                    <p>Ya puedes introducir tus datos, <?= $_SESSION['nombre-usuario'] ?></p>
+                <?php endif; ?>
                 <fieldset>
                     <h2 id="init-session">Iniciar sesión</h2>
                     <div>
