@@ -7,18 +7,13 @@ require_once 'pdo_bind_connection.php';
 $ahora = new DateTime();
 $ahora = $ahora->format('Y-m-d H:i:s');
 
-// Eliminar el usuario de la tabla temporal 
-$delete = "DELETE FROM temporal WHERE token_caducidad < :token";
-$prep = $pdo->prepare($delete);
-$prep->bindParam(':token', $ahora, PDO::PARAM_STR);
-$prep->execute();
-
 
 if (!$_GET['token']) {
-    header('Location:index.php?formulario=token-caducado');
+    header('Location:index.php');
     exit();
 }
 
+// Comprobar si el token existe en la tabla temporal
 $select = "SELECT * FROM temporal WHERE token_registro = :token";
 $prep = $pdo->prepare($select);
 $prep->bindParam(':token', $_GET['token'], PDO::PARAM_STR);
@@ -53,6 +48,12 @@ $prep->execute();
 $delete = "DELETE FROM temporal WHERE token_registro = :token";
 $prep = $pdo->prepare($delete);
 $prep->bindParam(':token', $_GET['token'], PDO::PARAM_STR);
+$prep->execute();
+
+// Eliminar las filas con token caducados
+$delete = "DELETE FROM temporal WHERE token_caducidad < :token";
+$prep = $pdo->prepare($delete);
+$prep->bindParam(':token', $ahora, PDO::PARAM_STR);
 $prep->execute();
 
 // Redirigir al usuario a la página de inicio de sesión
